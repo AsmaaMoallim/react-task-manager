@@ -38,11 +38,18 @@ function App() {
     );
   };
 
+  const handelSaveTask = (task) => {
+
+  const id = tasks.length + 1;
+  const newTask = {id , ...task };
+    setTask([...tasks , newTask]);
+  };
+
   return (
     <div className="container">
       <Header />
-      
-      <AddTask />
+
+      <AddTask onSave={handelSaveTask} />
 
       {tasks.length > 0 ? (
         <Tasks
