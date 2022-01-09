@@ -1,29 +1,15 @@
-const tasks = [
-  {
-    id: 1,
-    text: "Appoiment",
-    day: "Feb 4th at 4:00pm",
-    reminder: true,
-  },
-  {
-    id: 2,
-    text: "Exam",
-    day: "March 5th at 6:00pm",
-    reminder: true,
-  },
-  {
-    id: 4,
-    text: "Study",
-    day: "Jun 6th at 10:00am",
-    reminder: false,
-  },
-];
+import Task from "./Task";
 
-const Tasks = () => {
+const Tasks = ({ tasks, onDelete, onRamainder }) => {
   return (
     <>
       {tasks.map((t) => (
-        <h3 key={t.id}> {t.text} </h3>
+        <Task
+          key={t.id}
+          task={t}
+          onDelete={onDelete}
+          onRamainder={onRamainder}
+        />
       ))}
     </>
   );

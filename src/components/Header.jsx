@@ -19,7 +19,7 @@ const Header = ({ title }) => {
 
 // we can have a default props value if not passed down from the parent to the chiled
 Header.defaultProps = {
-  title: "just learning",
+  title: "Task Manager",
 };
 
 export default Header;
