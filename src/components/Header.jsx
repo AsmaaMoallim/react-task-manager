@@ -3,15 +3,22 @@
 import Button from "./Button";
 
 //destructre the props {} and just take whhat you need... without the messy props.something
-const Header = ({ title }) => {
-    const handelClick = () => {
-        console.log("Clicked")
-    }
-
+const Header = ({ title, onAdd, showAddBtn }) => {
   return (
     <header className="header">
       <h1>{title}</h1>
-      <Button color="green" text="Add" onClick={handelClick}/>
+      {!showAddBtn ? (
+        <Button color="green" text="Add" onClick={onAdd} />
+      ) : (
+        <Button color="red" text="close" onClick={onAdd} />
+      )}
+
+      {/* anotehr way */}
+      {/* <Button
+        color={showAddBtn ? "red" : "green"}
+        text={showAddBtn ? "Close" : "Add"}
+        onClick={onAdd}
+      /> */}
     </header>
   );
 };

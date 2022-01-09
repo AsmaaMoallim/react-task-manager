@@ -4,6 +4,9 @@ import { useState } from "react";
 import AddTask from "./components/AddTask";
 
 function App() {
+
+  const [showAddBtn, setShowAddBtn] = useState(false);
+
   const [tasks, setTask] = useState([
     {
       id: 1,
@@ -38,6 +41,9 @@ function App() {
     );
   };
 
+  const handelShowAddBtn = () => {
+    setShowAddBtn(!showAddBtn);
+  }
   const handelSaveTask = (task) => {
 
   const id = tasks.length + 1;
@@ -47,9 +53,11 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
+      <Header onAdd={handelShowAddBtn} showAddBtn={showAddBtn} />
 
-      <AddTask onSave={handelSaveTask} />
+      {showAddBtn && (
+        <AddTask onAdd={handelShowAddBtn} onSave={handelSaveTask} />
+      )}
 
       {tasks.length > 0 ? (
         <Tasks
