@@ -4,7 +4,7 @@
       "id": 1,
       "text": "Appointment",
       "day": "Feb 4th at 4:00pm",
-      "reminder": false
+      "reminder": true
     },
     {
       "id": 2,
@@ -17,6 +17,12 @@
       "text": "Study",
       "day": "Jun 6th at 10:00am",
       "reminder": false
+    },
+    {
+      "text": "ht",
+      "day": "2021-12-31",
+      "reminder": false,
+      "id": 4
     }
   ]
 }

@@ -1,7 +1,10 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AddTask from "./components/AddTask";
+import Footer from "./components/Footer";
+import About from "./components/About";
 
 function App() {
   const [showAddBtn, setShowAddBtn] = useState(false);
@@ -93,23 +96,41 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <Header onAdd={handelShowAddBtn} showAddBtn={showAddBtn} />
+    <Router>
+      <div className="container">
+        <Header onAdd={handelShowAddBtn} showAddBtn={showAddBtn} />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                {showAddBtn && (
+                  <AddTask onAdd={handelShowAddBtn} onSave={handelSaveTask} />
+                )}
 
-      {showAddBtn && (
-        <AddTask onAdd={handelShowAddBtn} onSave={handelSaveTask} />
-      )}
+                {tasks.length > 0 ? (
+                  <Tasks
+                    tasks={tasks}
+                    onDelete={handelDelete}
+                    onRamainder={handelRamainder}
+                  />
+                ) : (
+                  "No Tasks Darlling ^_^ l Add some!"
+                )}
+              </>
+            }
+            
+          ></Route>
 
-      {tasks.length > 0 ? (
-        <Tasks
-          tasks={tasks}
-          onDelete={handelDelete}
-          onRamainder={handelRamainder}
-        />
-      ) : (
-        "No Tasks Darlling ^_^ l Add some!"
-      )}
-    </div>
+          <Route exact path="/about" element={<About />}>
+            {" "}
+          </Route>
+        </Routes>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
